@@ -1,0 +1,150 @@
+/* CSS declarations go here */
+html, body, .container {
+	color: #CCC;
+	background-color: #111;
+	font-family: "Roboto Condensed";
+}
+
+nav {
+	padding: 0.5em;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+#shoppinglist {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#shoppinglist li {
+	display: block;
+	width: 15em;
+	height: 10em;
+	float: left;
+	border-radius: 20px;
+	overflow: hidden;
+	box-sizing: border-box;
+	border: 5px solid black;
+}
+
+#shoppinglist li * {
+	pointer-events: none;
+}
+
+#shoppinglist li label {
+	pointer-events: auto;
+}
+
+#shoppinglist li .image {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+#shoppinglist li:hover {
+	border: 2px solid black;
+}
+
+#shoppinglist li.needed .image {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
+
+#shoppinglist li .image {
+	z-index: -100;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+	background-position: center;
+	background-size: cover;
+	box-sizing: border-box;
+}
+
+#shoppinglist li.needed .image {
+	opacity: 1;
+}
+
+#shoppinglist li.drop_target,
+#shoppinglist li.drop_target:hover {
+	border-radius: 0px;
+}
+
+
+
+
+
+
+
+/* SWITCH */
+label.switch {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin-right: 0.5em;
+	color: white;
+	text-shadow: 0 0 4px black;
+}
+label.switch input {
+	display: none;
+}
+label.switch span.title {
+	display: inline-block;
+	margin: 0.75em;
+}
+label.switch span.slider {
+	margin: 0.75em;
+	background: #e5e5e5;
+	display: inline-block;
+	width: 30px;
+	height: 20px;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-radius: 999px;
+}
+
+label.switch span.slider::before, label.switch span.slider::after {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background: white;
+	top: 2px;
+	left: 2px;
+	content: '';
+	border-radius: 999px;
+}
+
+label.switch span.slider::before {
+	background: #4cd964;
+	width: 26px;
+}
+
+label.switch span.slider::after {
+	height: 12px;
+	width: 12px;
+	top: 4px;
+	left: 4px;
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+label.switch input:checked + span::before {
+	background: #FF3B00;
+}
+
+label.switch input:checked + span::after {
+	right: 4px;
+	left: auto;
+}
+
+

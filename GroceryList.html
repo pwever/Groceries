@@ -1,0 +1,59 @@
+<head>
+  <title>GroceryList</title>
+</head>
+
+<body>
+  
+	<nav>
+	<ul>
+		<li>
+			<form>
+			<select>
+				<option>All</option>
+				<option>Trader Joes</option>
+				<option>Ralphs</option>
+				<option>Farmers Market</option>
+				<option>Super King</option>
+				<option>Super A</option>
+			</select>
+			</form>
+		</li>
+		<li>
+			<form>
+				<select>
+					<option>All</option>
+					<option>Needed</option>
+					<option>Not needed</option>
+				</select>
+			</form>
+		</li>
+		<li>
+			<form class="new_product">
+				<input type="text" name="text" placeholder="Add product" />
+			</form>
+		</li>
+	</ul>
+			
+	</nav>
+
+
+	<ul id="shoppinglist">
+		{{#each products}}
+			{{> product}}
+		{{/each}}
+	</ul>
+
+	
+</body>
+
+<template name="product">
+  <li id="{{this._id}}" class="{{#if isNeeded}}needed{{/if}}">
+  	<label class="switch">
+	  	<div class="image" style="{{#if this.image}}background-image:url(img/{{this.image}}){{/if}}"></div>
+  		<input type="checkbox" checked="{{#if isNeeded}}checked{{/if}}" />
+  		<span class="slider"></span>
+  		<span class="title">{{name}}</span>
+  	</label>
+  </li>
+</template>
+
