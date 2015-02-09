@@ -1,12 +1,17 @@
 /* CSS declarations go here */
 html, body, .container {
+	margin: 0;
+	padding: 0;
+
 	color: #CCC;
 	background-color: #111;
-	font-family: "Roboto Condensed";
+
+	font-family: "Roboto Condensed", sans-serif;
 }
 
 nav {
-	padding: 0.5em;
+	position: relative;
+	width: 100%;
 }
 
 nav ul {
@@ -16,41 +21,76 @@ nav ul {
 }
 
 nav ul li {
-	display: inline-block;
+	display: block;
+	box-sizing: border-box;
+	border: 1px solid black;
+	float: left;
+	width: 8em;
+	padding: 0.75em;
+	margin: 0;
+	cursor: pointer; /* enables jquery click event on ios */
 }
+
+nav ul li.active {
+	background-color: #666;
+	color: white;
+}
+
+nav div.new_product {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 8em;
+	padding: 0.5em;
+}
+
+nav div.new_product input {
+	width: 100%;
+}
+
+
+
+
+
+
+
+
 
 #shoppinglist {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	clear: both;
+	width: 100%
 }
 
 #shoppinglist li {
 	display: block;
-	width: 15em;
-	height: 10em;
+	width: 8em;
+	height: 8em;
 	float: left;
-	border-radius: 20px;
+	xborder-radius: 20px;
 	overflow: hidden;
 	box-sizing: border-box;
-	border: 5px solid black;
+	border: 1px solid black;
+
+	transition: all 0.25s ease;
 }
 
-#shoppinglist li * {
-	pointer-events: none;
-}
+/* prevent dragover odditites */
+#shoppinglist li * { pointer-events: none; }
+#shoppinglist li label { pointer-events: auto; }
 
-#shoppinglist li label {
-	pointer-events: auto;
-}
+
 
 #shoppinglist li .image {
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
+	/* transition: all 0.5s ease; */
 }
 
 #shoppinglist li:hover {
-	border: 2px solid black;
+	border: 5px solid black;
 }
 
 #shoppinglist li.needed .image {
@@ -63,10 +103,9 @@ nav ul li {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	opacity: 0.8;
+	opacity: 0.7;
 	background-position: center;
 	background-size: cover;
-	box-sizing: border-box;
 }
 
 #shoppinglist li.needed .image {
@@ -82,9 +121,35 @@ nav ul li {
 
 
 
+/* SHOPPING CONTEXTS */
+#shoppinglist.needed li {
+	display: none;
+}
+#shoppinglist.needed li.needed {
+	display: block;
+}
+#shoppinglist.not_needed li {
+	display: block;
+}
+#shoppinglist.not_needed li.needed {
+	display: none;
+}
+#shoppinglist.not_needed li div {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+	opacity: 1;
+}
+
+
+
+
+
+
+
 
 
 /* SWITCH */
+
 label.switch {
 	position: relative;
 	display: block;
@@ -101,6 +166,7 @@ label.switch span.title {
 	display: inline-block;
 	margin: 0.75em;
 }
+/*
 label.switch span.slider {
 	margin: 0.75em;
 	background: #e5e5e5;
@@ -146,5 +212,36 @@ label.switch input:checked + span::after {
 	right: 4px;
 	left: auto;
 }
+*/
 
 
+
+
+
+/* IPAD */
+@media only screen and (max-width: 768px) {
+	#shoppinglist li {
+		width: 128px;
+		height: 128px;
+	}
+	nav ul li,
+	nav div.new_product {
+		width: 128px;
+	}
+}
+
+/* IPHONE */
+@media only screen and (max-width: 320px) {
+	#shoppinglist li {
+		width: 106px;
+		height: 106px;
+	}
+	nav ul li,
+	nav div.new_product {
+		width: 106px;
+	}
+
+	nav div.new_product {
+		display: none;
+	}
+}

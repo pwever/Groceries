@@ -1,40 +1,19 @@
 <head>
   <title>GroceryList</title>
+  <link rel="apple-touch-icon" href="icons/app.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="icons/76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="icons/120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/152.png">
+  <link rel="apple-touch-startup-image" href="icons/startup.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto+Slab|Roboto:400,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
   
-	<nav>
-	<ul>
-		<li>
-			<form>
-			<select>
-				<option>All</option>
-				<option>Trader Joes</option>
-				<option>Ralphs</option>
-				<option>Farmers Market</option>
-				<option>Super King</option>
-				<option>Super A</option>
-			</select>
-			</form>
-		</li>
-		<li>
-			<form>
-				<select>
-					<option>All</option>
-					<option>Needed</option>
-					<option>Not needed</option>
-				</select>
-			</form>
-		</li>
-		<li>
-			<form class="new_product">
-				<input type="text" name="text" placeholder="Add product" />
-			</form>
-		</li>
-	</ul>
-			
-	</nav>
+	{{> nav}}
 
 
 	<ul id="shoppinglist">
@@ -43,11 +22,26 @@
 		{{/each}}
 	</ul>
 
-	
+
 </body>
 
+<template name="nav">
+	<nav>
+	<ul>
+		<li data-filter="all" class="active">Products</li>
+		<li data-filter="not_needed">At Home</li>
+		<li data-filter="needed">In Store</li>
+	</ul>
+
+	<div class="new_product">
+		<form class="new_product"><input type="search" name="text" placeholder="Add product" /></form>	
+	</div>
+	
+	</nav>
+</template>
+
 <template name="product">
-  <li id="{{this._id}}" class="{{#if isNeeded}}needed{{/if}}">
+  <li class="{{#if isNeeded}}needed{{/if}}">
   	<label class="switch">
 	  	<div class="image" style="{{#if this.image}}background-image:url(img/{{this.image}}){{/if}}"></div>
   		<input type="checkbox" checked="{{#if isNeeded}}checked{{/if}}" />
