@@ -1,6 +1,6 @@
 <head>
   <title>GroceryList</title>
-  <link rel="apple-touch-icon" href="icons/app.png">
+  <link rel="apple-touch-icon" href="icons/icon.png">
   <link rel="apple-touch-icon" sizes="76x76" href="icons/76.png">
   <link rel="apple-touch-icon" sizes="120x120" href="icons/120.png">
   <link rel="apple-touch-icon" sizes="152x152" href="icons/152.png">
@@ -15,15 +15,17 @@
   
 	{{> nav}}
 
+	{{> shopping_list}}
 
-	<ul id="shoppinglist">
-		{{#each products}}
-			{{> product}}
-		{{/each}}
-	</ul>
-
+	{{#if selected_product}}
+		{{> detail}}
+	{{/if}}
 
 </body>
+
+
+
+
 
 <template name="nav">
 	<nav>
@@ -34,10 +36,18 @@
 	</ul>
 
 	<div class="new_product">
-		<form class="new_product"><input type="search" name="text" placeholder="Add product" /></form>	
+		<form class="new_product"><input type="search" name="text" placeholder="Search/add product" /></form>	
 	</div>
 	
 	</nav>
+</template>
+
+<template name="shopping_list">
+	<ul id="shoppinglist">
+		{{#each products}}
+			{{> product}}
+		{{/each}}
+	</ul>
 </template>
 
 <template name="product">
@@ -49,5 +59,28 @@
   		<span class="title">{{name}}</span>
   	</label>
   </li>
+</template>
+
+<template name="detail">
+	<div id="detail">
+	{{#if selected_product.image}}
+	<div class="image"><img src="img/{{selected_product.image}}" /></div>
+	{{/if}}
+	<form>
+		<input type="text" name="name" value="{{selected_product.name}}"/>
+		
+		<input type="file" />
+		
+		{{#each ailes}}
+			<input type="radio" id="aile_{{name}}" name="aile" value="{{name}}" {{inaile}} /><label for="aile_{{name}}">{{name}}</label>
+		{{/each}}
+
+		<button type="submit">Update</button>
+
+		<button id="delete_button" type="button">Delete</button>
+		
+	</form>
+	<span id="close_button">&times;</span>
+	</div>
 </template>
 

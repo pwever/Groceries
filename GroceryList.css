@@ -9,6 +9,8 @@ html, body, .container {
 	font-family: "Roboto Condensed", sans-serif;
 }
 
+
+/* navigation */
 nav {
 	position: relative;
 	width: 100%;
@@ -20,7 +22,8 @@ nav ul {
 	padding: 0;
 }
 
-nav ul li {
+nav ul li,
+nav div.new_product {
 	display: block;
 	box-sizing: border-box;
 	border: 1px solid black;
@@ -38,14 +41,18 @@ nav ul li.active {
 
 nav div.new_product {
 	position: absolute;
+	display: block;
 	right: 0;
 	top: 0;
 	width: 8em;
-	padding: 0.5em;
 }
-
-nav div.new_product input {
+nav div.new_product form,
+nav div.new_product form input {
 	width: 100%;
+	font-family: "Roboto Condensed", sans-serif;
+}
+nav div.new_product form input {
+	font-size: 1em;
 }
 
 
@@ -55,13 +62,17 @@ nav div.new_product input {
 
 
 
+
+
+
+/* shopping list */
 
 #shoppinglist {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	clear: both;
-	width: 100%
+	width: 100%;
 }
 
 #shoppinglist li {
@@ -74,7 +85,7 @@ nav div.new_product input {
 	box-sizing: border-box;
 	border: 1px solid black;
 
-	transition: all 0.25s ease;
+	transition: border 1s ease;
 }
 
 /* prevent dragover odditites */
@@ -90,7 +101,8 @@ nav div.new_product input {
 }
 
 #shoppinglist li:hover {
-	border: 5px solid black;
+	border: 10px solid black;
+	transition-duration: 0.25s;
 }
 
 #shoppinglist li.needed .image {
@@ -121,7 +133,8 @@ nav div.new_product input {
 
 
 
-/* SHOPPING CONTEXTS */
+/* shopping contexts */
+
 #shoppinglist.needed li {
 	display: none;
 }
@@ -218,6 +231,53 @@ label.switch input:checked + span::after {
 
 
 
+#detail {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.9);
+	width: 100%;
+	height: 100%;
+	padding: 2em;
+	box-sizing: border-box;
+}
+#detail form,
+#detail div.image {
+	width: 25em;
+	max-width: 100%;
+	margin: 0 auto;
+}
+#detail div.image img {
+	width: 100%;
+}
+#detail form input {
+	box-sizing: border-box;
+	width: 100%;
+}
+#detail form input[type=radio] {
+	width: auto;
+	display: none;
+}
+#detail form label {
+	line-height: 2em;
+	padding: 0.5em;
+}
+#detail form input[type=radio]:checked + label {
+	color: red;
+}
+#detail button {
+	clear: both;
+}
+#detail #close_button {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+}
+
+
+
+
+
 /* IPAD */
 @media only screen and (max-width: 768px) {
 	#shoppinglist li {
@@ -228,6 +288,18 @@ label.switch input:checked + span::after {
 	nav div.new_product {
 		width: 128px;
 	}
+	
+}
+
+@media only screen and (max-width: 512px) {
+	nav div.new_product {
+		background-color: #666;
+		position: relative;
+		width: 100%;
+	}
+	#shoppinglist li:hover {
+		border: 1px solid black;
+	}
 }
 
 /* IPHONE */
@@ -236,12 +308,7 @@ label.switch input:checked + span::after {
 		width: 106px;
 		height: 106px;
 	}
-	nav ul li,
-	nav div.new_product {
+	nav ul li {
 		width: 106px;
-	}
-
-	nav div.new_product {
-		display: none;
 	}
 }
