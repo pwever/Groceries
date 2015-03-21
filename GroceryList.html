@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<div class="container">
   
 	{{> nav}}
 
@@ -21,6 +22,7 @@
 		{{> detail}}
 	{{/if}}
 
+</div>
 </body>
 
 
@@ -36,10 +38,27 @@
 	</ul>
 
 	<div class="new_product">
-		<form class="new_product"><input type="search" name="text" placeholder="Search/add product" /></form>	
+		{{> product_form}}
 	</div>
-	
+
 	</nav>
+</template>
+
+<template name="product_form">
+		<form class="new_product">
+			<input type="search" name="text" placeholder="Search/add product" />
+			<fieldset>
+				<legend>Details</legend>
+				<input type="file" />
+			
+				{{#each ailes}}
+					<input type="radio" id="aile_{{name}}" name="aile" value="{{name}}" {{inaile}} /><label for="aile_{{name}}">{{name}}</label>
+				{{/each}}
+
+				<button type="submit">Update</button>
+				<button id="delete_button" type="button">Delete</button>
+			</fieldset>
+		</form>	
 </template>
 
 <template name="shopping_list">

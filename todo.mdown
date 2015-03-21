@@ -1,0 +1,9 @@
+# GroceryList
+
+## TODOs
+
+* Implement AppCache mechanism
+* Allow image upload from iOS
+* Understand difference between AppCache and LocalStorage
+
+

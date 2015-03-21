@@ -1,5 +1,5 @@
 /* CSS declarations go here */
-html, body, .container {
+html, body {
 	margin: 0;
 	padding: 0;
 
@@ -9,26 +9,48 @@ html, body, .container {
 	font-family: "Roboto Condensed", sans-serif;
 }
 
+body > div.container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0;
+	box-sizing: content-box;
+}
+/* container sizing */
+@media only screen and (min-width: 320px) { body > div.container { width: 320px; } }
+@media only screen and (min-width: 480px) { body > div.container { width: 480px; } }
+@media only screen and (min-width: 640px) { body > div.container { width: 640px; } }
+@media only screen and (min-width: 800px) { body > div.container { width: 800px; } }
+@media only screen and (min-width: 960px) { body > div.container { width: 960px; } }
+@media only screen and (min-width: 1120px) { body > div.container { width: 1120px; } }
+@media only screen and (min-width: 1280px) { body > div.container { width: 1280px; } }
+@media only screen and (min-width: 1440px) { body > div.container { width: 1440px; } }
+@media only screen and (min-width: 1600px) { body > div.container { width: 1600px; } }
+
+
+
+
+
+
+
 
 /* navigation */
 nav {
 	position: relative;
 	width: 100%;
 }
-
 nav ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-
-nav ul li,
-nav div.new_product {
+nav ul li {
 	display: block;
+	float: left;
 	box-sizing: border-box;
 	border: 1px solid black;
-	float: left;
-	width: 8em;
+	width: 160px;
 	padding: 0.75em;
 	margin: 0;
 	cursor: pointer; /* enables jquery click event on ios */
@@ -40,11 +62,14 @@ nav ul li.active {
 }
 
 nav div.new_product {
+	clear: both;
 	position: absolute;
 	display: block;
 	right: 0;
 	top: 0;
-	width: 8em;
+	width: 160px;
+	background-color: black;
+	padding: 0.5em 0;
 }
 nav div.new_product form,
 nav div.new_product form input {
@@ -53,6 +78,12 @@ nav div.new_product form input {
 }
 nav div.new_product form input {
 	font-size: 1em;
+}
+nav div.new_product fieldset {
+	display: none;
+}
+nav div.new_product.detailed fieldset {
+	display: block;
 }
 
 
@@ -77,8 +108,8 @@ nav div.new_product form input {
 
 #shoppinglist li {
 	display: block;
-	width: 8em;
-	height: 8em;
+	width: 160px;
+	height: 160px;
 	float: left;
 	xborder-radius: 20px;
 	overflow: hidden;
@@ -237,7 +268,7 @@ label.switch input:checked + span::after {
 	left: 0;
 	background-color: rgba(0,0,0,0.9);
 	width: 100%;
-	height: 100%;
+	xheight: 100%;
 	padding: 2em;
 	box-sizing: border-box;
 }
@@ -291,16 +322,27 @@ label.switch input:checked + span::after {
 	
 }
 
-@media only screen and (max-width: 512px) {
+@media only screen and (max-width: 640px) {
+	#shoppinglist li {
+		width: 160px;
+		height: 160px;
+	}
+	nav ul li {
+		width: 160px;
+	}
 	nav div.new_product {
-		background-color: #666;
+		background-color: white;
 		position: relative;
 		width: 100%;
+	}
+	nav div.new_product input {
+		border: 0;
 	}
 	#shoppinglist li:hover {
 		border: 1px solid black;
 	}
 }
+
 
 /* IPHONE */
 @media only screen and (max-width: 320px) {
